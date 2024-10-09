@@ -56,7 +56,7 @@ class SampleSheet:
     replicate: int
     fastq_1: LatchFile
     fastq_2: LatchFile
-    control: str
+    control: Optional[str]
 
 
 class Reference(Enum):
@@ -188,6 +188,7 @@ def nextflow_runtime(
             latch_genome.name + ".refGene.gtf",
         )
         bowtie2 = os.path.join("s3://latch-public/test-data/35729/cutandrun/", latch_genome.name, "bowtie2")
+    print(*get_flag("input", input_samplesheet))
 
     cmd = [
         "/root/nextflow",
@@ -200,6 +201,10 @@ def nextflow_runtime(
         "-c",
         "latch.config",
         "-resume",
+    ]
+    if use_control == False:
+        cmd += ["--use_control", "false"]
+    cmd += [
         *get_flag("input", input_samplesheet),
         *get_flag("outdir", LatchOutputDir(outdir.remote_path + "/" + run_name)),
         *get_flag("multiqc_title", multiqc_title),
