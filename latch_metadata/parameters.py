@@ -13,7 +13,7 @@ class SampleSheet:
     replicate: int
     fastq_1: LatchFile
     fastq_2: LatchFile
-    control: str
+    control: typing.Optional[str]
 
 
 class Reference(Enum):
