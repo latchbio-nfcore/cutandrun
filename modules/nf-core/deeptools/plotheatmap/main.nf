@@ -1,6 +1,6 @@
 process DEEPTOOLS_PLOTHEATMAP {
     tag "$meta.id"
-    label 'process_low'
+    label 'process_high'
 
     conda "bioconda::deeptools=3.5.1"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?

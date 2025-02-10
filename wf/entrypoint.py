@@ -40,7 +40,7 @@ def initialize(run_name: str) -> str:
         "http://nf-dispatcher-service.flyte.svc.cluster.local/provision-storage",
         headers=headers,
         json={
-            "storage_expiration_hours": 0,
+            "storage_expiration_hours": 5,
             "version": 2,
         },
     )

@@ -2,7 +2,7 @@ colour_pallete = ['38,70,83', '231,111,81', '42,157,143', '244,162,97', '233,196
 
 process IGV_SESSION {
     tag "igv"
-    label 'process_min'
+    label 'process_medium'
 
     conda "conda-forge::python=3.8.3"
     container "quay.io/biocontainers/python:3.8.3"
